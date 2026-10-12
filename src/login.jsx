@@ -1,8 +1,8 @@
-﻿
+
 import { useState } from 'react'
 import './login.css'
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || 'http://localhost:8080'
+  import.meta.env.VITE_API_URL || 'https://skillbridge-backend-n2rn.onrender.com'
 
 const internships = [
   {
@@ -14,7 +14,7 @@ const internships = [
     skills: ['Java', 'Spring Boot', 'SQL'],
     description: 'Learn backend development and build Java applications.',
     duration: '3 months',
-    stipend: 'Sample: â‚¹8,000/month',
+    stipend: 'Sample: ₹8,000/month',
   },
   {
     id: 2,
@@ -24,8 +24,8 @@ const internships = [
     type: 'Remote',
     skills: ['Python', 'SQL'],
     description: 'Work on Python programming and data-driven applications.',
-    duration: '2â€“3 months',
-    stipend: 'Sample: â‚¹7,000/month',
+    duration: '2–3 months',
+    stipend: 'Sample: ₹7,000/month',
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const internships = [
     skills: ['HTML & CSS', 'JavaScript', 'React'],
     description: 'Create responsive web pages using modern frontend tools.',
     duration: '3 months',
-    stipend: 'Sample: â‚¹6,000/month',
+    stipend: 'Sample: ₹6,000/month',
   },
   {
     id: 4,
@@ -46,8 +46,8 @@ const internships = [
     type: 'Remote',
     skills: ['Java', 'Spring Boot', 'React', 'SQL'],
     description: 'Explore frontend and backend application development.',
-    duration: '3â€“6 months',
-    stipend: 'Sample: â‚¹10,000/month',
+    duration: '3–6 months',
+    stipend: 'Sample: ₹10,000/month',
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const internships = [
     skills: ['Python', 'SQL'],
     description: 'Practice database queries and basic data analysis.',
     duration: '2 months',
-    stipend: 'Sample: â‚¹5,000/month',
+    stipend: 'Sample: ₹5,000/month',
   },
   {
     id: 6,
@@ -222,7 +222,7 @@ function Login() {
                 className={activeTab === 'dashboard' ? 'nav-item active' : 'nav-item'}
                 onClick={() => setActiveTab('dashboard')}
               >
-                <span>âŒ‚</span> Dashboard
+                <span>⌂</span> Dashboard
               </button>
 
               <button
@@ -230,7 +230,7 @@ function Login() {
                 className={activeTab === 'profile' ? 'nav-item active' : 'nav-item'}
                 onClick={() => setActiveTab('profile')}
               >
-                <span>â™™</span> My Profile
+                <span>♙</span> My Profile
               </button>
 
               <button
@@ -238,7 +238,7 @@ function Login() {
                 className={activeTab === 'skills' ? 'nav-item active' : 'nav-item'}
                 onClick={() => setActiveTab('skills')}
               >
-                <span>âœ¦</span> My Skills
+                <span>✦</span> My Skills
               </button>
 
               <button
@@ -246,7 +246,7 @@ function Login() {
                 className={activeTab === 'internships' ? 'nav-item active' : 'nav-item'}
                 onClick={() => setActiveTab('internships')}
               >
-                <span>â–£</span> Explore Internships
+                <span>▣</span> Explore Internships
               </button>
             </nav>
 
@@ -272,17 +272,17 @@ function Login() {
                       className="primary-button"
                       onClick={() => setActiveTab('internships')}
                     >
-                      Find My Internships â†’
+                      Find My Internships →
                     </button>
                   </div>
                   <div className="welcome-illustration" aria-hidden="true">
-                    ðŸŽ“
+                    🎓
                   </div>
                 </section>
 
                 <section className="stats-grid">
                   <div className="stat-card">
-                    <span className="stat-icon purple">âœ¦</span>
+                    <span className="stat-icon purple">✦</span>
                     <div>
                       <p>My Skills</p>
                       <h2>{studentSkills.length}</h2>
@@ -290,7 +290,7 @@ function Login() {
                   </div>
 
                   <div className="stat-card">
-                    <span className="stat-icon green">âœ“</span>
+                    <span className="stat-icon green">✓</span>
                     <div>
                       <p>Matched Internships</p>
                       <h2>{matchedInternships.length}</h2>
@@ -298,7 +298,7 @@ function Login() {
                   </div>
 
                   <div className="stat-card">
-                    <span className="stat-icon orange">â™™</span>
+                    <span className="stat-icon orange">♙</span>
                     <div>
                       <p>Student ID</p>
                       <h2>#{student.id}</h2>
@@ -317,7 +317,7 @@ function Login() {
                       className="text-button"
                       onClick={() => setActiveTab('internships')}
                     >
-                      View all â†’
+                      View all →
                     </button>
                   </div>
 
@@ -325,7 +325,7 @@ function Login() {
                     <p>Loading your profile...</p>
                   ) : matchedInternships.length === 0 ? (
                     <div className="empty-state">
-                      <span>ðŸ’¡</span>
+                      <span>💡</span>
                       <h3>No matches yet</h3>
                       <p>
                         Select skills during registration to receive
@@ -417,7 +417,7 @@ function Login() {
                 {studentSkills.length > 0 ? (
                   <>
                     <div className="skills-summary">
-                      <span className="skills-summary-icon">âœ¦</span>
+                      <span className="skills-summary-icon">✦</span>
                       <div>
                         <h3>{studentSkills.length} skills registered</h3>
                         <p>
@@ -429,7 +429,7 @@ function Login() {
                     <div className="skills-list">
                       {studentSkills.map((skill, index) => (
                         <span className="skill-chip" key={`${skill}-${index}`}>
-                          <span>âœ“</span> {skill}
+                          <span>✓</span> {skill}
                         </span>
                       ))}
                     </div>
@@ -441,7 +441,7 @@ function Login() {
                   </>
                 ) : (
                   <div className="empty-state">
-                    <span>âœ¦</span>
+                    <span>✦</span>
                     <h3>No saved skills found</h3>
                     <p>
                       Your account has no skills stored yet. Older accounts
@@ -464,7 +464,7 @@ function Login() {
                 </div>
 
                 <div className="recommendation-info">
-                  <span>âœ¦</span>
+                  <span>✦</span>
                   <p>
                     Matching based on <strong>{studentSkills.length}</strong>{' '}
                     saved skill(s). More matching skills appear first.
@@ -482,7 +482,7 @@ function Login() {
                   </div>
                 ) : (
                   <div className="empty-state">
-                    <span>ðŸ”Ž</span>
+                    <span>🔎</span>
                     <h3>No matching internships yet</h3>
                     <p>
                       Register your skills to see sample internships that
@@ -518,7 +518,7 @@ function Login() {
           Skill<span>Bridge</span>
         </a>
 
-        <div className="login-icon">ðŸŽ“</div>
+        <div className="login-icon">🎓</div>
         <h1>Welcome Back!</h1>
         <p className="login-subtitle">
           Login to continue your career journey.
@@ -562,7 +562,7 @@ function Login() {
           Don't have an account? <a href="/register">Register</a>
         </p>
         <p className="register-footer">
-          <a href="/">â† Back to Home</a>
+          <a href="/">← Back to Home</a>
         </p>
       </div>
     </div>
@@ -573,7 +573,7 @@ function InternshipCard({ internship }) {
   return (
     <article className="internship-card">
       <div className="internship-card-top">
-        <div className="company-icon">ðŸ’¼</div>
+        <div className="company-icon">💼</div>
         <span className="match-badge">
           {internship.matchCount} skill
           {internship.matchCount === 1 ? '' : 's'} matched
@@ -585,9 +585,9 @@ function InternshipCard({ internship }) {
       <p className="internship-description">{internship.description}</p>
 
       <div className="internship-meta">
-        <span>ðŸ“ {internship.location}</span>
-        <span>ðŸ•’ {internship.duration}</span>
-        <span>ðŸ’° {internship.stipend}</span>
+        <span>📍 {internship.location}</span>
+        <span>🕒 {internship.duration}</span>
+        <span>💰 {internship.stipend}</span>
       </div>
 
       <div className="internship-skills">
@@ -599,7 +599,7 @@ function InternshipCard({ internship }) {
               key={skill}
               className={matched ? 'internship-skill matched' : 'internship-skill'}
             >
-              {matched ? 'âœ“ ' : ''}{skill}
+              {matched ? '✓ ' : ''}{skill}
             </span>
           )
         })}
