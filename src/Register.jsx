@@ -3,7 +3,8 @@ import { useState } from 'react';
 import './Register.css';
 
 const API_BASE_URL = (
-  import.meta.env.VITE_API_URL || 'http://localhost:8080'
+  import.meta.env.VITE_API_URL ||
+  'https://skillbridge-backend-n2rn.onrender.com'
 ).replace(/\/+$/, '');
 
 const AVAILABLE_SKILLS = [
@@ -54,11 +55,11 @@ function Register() {
     );
 
     setError('');
+    setSuccess('');
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     setError('');
     setSuccess('');
 
@@ -118,7 +119,6 @@ function Register() {
       );
 
       const responseText = await response.text();
-
       let result = {};
 
       if (responseText) {
@@ -132,15 +132,15 @@ function Register() {
       if (!response.ok) {
         throw new Error(
           result.message ||
-          result.error ||
-          (response.status === 409
-            ? 'This email is already registered.'
-            : `Registration failed (${response.status}). Please try again.`)
+            result.error ||
+            (response.status === 409
+              ? 'This email is already registered.'
+              : `Registration failed (${response.status}).`)
         );
       }
 
       setSuccess(
-        'Registration successful! Your selected skills have been submitted. You can now log in.'
+        'Registration successful! You can now log in.'
       );
 
       setFormData({
@@ -158,11 +158,11 @@ function Register() {
 
       if (err instanceof TypeError) {
         setError(
-          'Cannot connect to the backend. Please check the deployed backend URL and CORS settings.'
+          'Cannot connect to the backend. Check the Render service status and CORS settings.'
         );
       } else {
         setError(
-          err.message || 'Something went wrong during registration.'
+          err.message || 'Registration failed. Please try again.'
         );
       }
     } finally {
@@ -177,18 +177,25 @@ function Register() {
           <h1>🎓 SkillBridge</h1>
           <h2>Create Your Account</h2>
           <p>
-            Join SkillBridge and discover internships that match your skills.
+            Join SkillBridge and discover internships that match
+            your skills.
           </p>
         </div>
 
         {error && (
-          <div className="register-message error-message" role="alert">
+          <div
+            className="register-message error-message"
+            role="alert"
+          >
             {error}
           </div>
         )}
 
         {success && (
-          <div className="register-message success-message" role="status">
+          <div
+            className="register-message success-message"
+            role="status"
+          >
             {success}
             <p>
               <a href="/login">Go to Login</a>
@@ -241,7 +248,9 @@ function Register() {
           </div>
 
           <div className="register-form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">
+              Confirm Password
+            </label>
             <input
               id="confirmPassword"
               name="confirmPassword"
@@ -263,7 +272,9 @@ function Register() {
               onChange={handleChange}
               required
             >
-              <option value="Computer Science">Computer Science</option>
+              <option value="Computer Science">
+                Computer Science
+              </option>
               <option value="Information Technology">
                 Information Technology
               </option>
@@ -276,7 +287,9 @@ function Register() {
               <option value="Mechanical Engineering">
                 Mechanical Engineering
               </option>
-              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Civil Engineering">
+                Civil Engineering
+              </option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -303,7 +316,10 @@ function Register() {
 
             <div className="register-skills-grid">
               {AVAILABLE_SKILLS.map((skill) => (
-                <label key={skill} className="register-skill-option">
+                <label
+                  key={skill}
+                  className="register-skill-option"
+                >
                   <input
                     type="checkbox"
                     checked={skills.includes(skill)}
@@ -315,7 +331,8 @@ function Register() {
             </div>
 
             <p className="selected-skills-count">
-              {skills.length} skill{skills.length === 1 ? '' : 's'} selected
+              {skills.length} skill
+              {skills.length === 1 ? '' : 's'} selected
             </p>
           </fieldset>
 
